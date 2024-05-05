@@ -10,5 +10,5 @@ if(isset($_GET['id'])) {
     $record = mysqli_fetch_assoc($result);
 
     echo json_encode($record);
-    
+    exit;
 }

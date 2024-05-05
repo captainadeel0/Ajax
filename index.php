@@ -18,9 +18,7 @@
         <div class="loader spinner-border text-danger" role="status">
             <span class="visually-hidden">Loading...</span>
         </div>
-        <div class="m-2">
-            <input type="text" id="searchInput" placeholder="type to search" class="form-control w-50" />
-        </div>
+        
         
     </div>
     
@@ -30,7 +28,7 @@
 
 <!-- view categories container -->
 
-    <h3 class=" mt-2 text-success"> User Information</h3>
+    <h3 class=" mt-2 text-success"> Items Information</h3>
    
     <hr>
 
@@ -40,7 +38,7 @@
 
             <div class="col-lg-6 mb-2">
                 <label class="form-label"><h6>Name</h6></label>
-                <input type="text" class="form-control" id="fname"   placeholder="Enter here..." required>
+                <input type="text" class="form-control" id="name"   placeholder="Enter here..." required>
             </div>
 
 
@@ -58,7 +56,7 @@
             <div class="offset-8 col-lg-4 ">
                 
 
-                <button class="btn btn-success text-white btn-lg mt-1 w-100" id="send" name="submit" >Submit</button>
+                <button class="btn btn-success text-white btn-lg mt-1 w-100" id="send"  >Submit</button>
             </div>
 
             
@@ -81,7 +79,15 @@
                     
                         <div class="mb-3">
                             <label for="name" class="form-label">Name</label>
-                            <input type="text" class="form-control" id="name" placeholder="Product title" required autocomplete="off">
+                            <input type="text" class="form-control" id="editname" placeholder="Product title" required autocomplete="off">
+                        </div>
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Price</label>
+                            <input type="number" class="form-control" id="editprice" placeholder="Product title" required autocomplete="off">
+                        </div>
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Description</label>
+                            <input type="text" class="form-control" id="editdescription" placeholder="Product title" required autocomplete="off">
                         </div>
                     <div class="alert alert-success" style="display: none"; id="messages"></div>
                 </div>
@@ -93,6 +99,10 @@
             </div>
         </div>
     </div>
+
+    <div class="mt-5">
+            <input type="text" id="searchInput" placeholder="type to search" class="form-control w-50" />
+        </div>
 
     <div id="data_table">
 
@@ -118,9 +128,9 @@
                     url: "./insert-query.php",
                     type: "POST",
                     data: {
-                        name: name,
-                        price: price,
-                        description: description
+                        item_name: name,
+                        item_price: price,
+                        item_description: description
                     },
                     success: function(response) {
                         alert(response);
@@ -162,8 +172,8 @@
             loadData();
 
 
-            // edit  task 
-            $(document).on("click", '.editBtn', function() {
+             // edit  task 
+             $(document).on("click", '.editBtn', function() {
                 let id = $(this).data('id');
                 $.ajax({
                     url: "./show-data-query.php",
@@ -174,7 +184,9 @@
                     success: function(res) {
                         // console.log(res);
                         let data = JSON.parse(res);
-                       $("#name").val(data.name);
+                       $("#editname").val(data.name);
+                       $("#editprice").val(data.price);
+                       $("#editdescription").val(data.description);
                        $("#item_id").val(data.id);
                         $("#exampleModal").modal("show");
                         // console.log(data.name)
@@ -189,7 +201,9 @@
                     url: "./update.php",
                     type: "POST",
                     data: {
-                        name: $("#name").val(),
+                        name: $("#editname").val(),
+                        price: $("#editprice").val(),
+                        description: $("#editdescription").val(),
                         id: $("#item_id").val()
                     },
                     success: function(res) {
@@ -197,10 +211,36 @@
                         setTimeout(() => {
                             $("#messages").hide();
                             $("#exampleModal").modal("hide");
-                        }, 2000)
+                        }, 8000)
                     }
                 })
             })
+
+            <!-- delete model -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="deleteModal"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+    Are you sure , Do you want to delete this?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger" id="deleteBtn">Yes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- end deleted -->
+
 
 
             // hide modal event
