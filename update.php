@@ -1,5 +1,6 @@
 <?php
-require_once "./db_con.php";
+require_once "db_con.php";
+
 
 if(isset($_POST['id'])) {
     $id = $_POST['id'];
@@ -7,7 +8,7 @@ if(isset($_POST['id'])) {
     $price = $_POST['price'];
     $description = $_POST['description'];
 
-    $sql = "UPDATE items SET `name` ='$name', `price` ='$price', `description` ='$description' WHERE id=$id";
+    $sql = "UPDATE items SET `name`='$name', `price`='$price', `description`='$description' WHERE id=$id";
     $result = mysqli_query($db_con, $sql);
     if ($result) {
         echo "successfully updated";

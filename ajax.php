@@ -31,7 +31,7 @@ while($row = mysqli_fetch_assoc($result)){
     $html .= "<td>$row[name]</td>";
     $html .= "<td>$row[price]</td>";
     $html .= "<td>$row[description]</td>";
-    $html .= "<td><button class='btn btn-warning btn-sm me-2 editBtn' data-id='$row[id]'>Edit</button><button class='btn btn-danger btn-sm'>Delete</button></td>";
+    $html .= "<td><button class='btn btn-warning btn-sm me-2 editBtn' data-id='$row[id]'>Edit</button><button class='btn btn-danger btn-sm delBtn' data-id='$row[id]'>Delete</button></td>";
     $html .= "</tr>";
 }
 
