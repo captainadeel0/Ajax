@@ -17,41 +17,30 @@
 
 <body>
 
-    <div class="container w-75 shadow mx-auto mt-5 p-5">
+    <div class="container w-100 shadow mx-auto mt-5 p-5">
 
-        <h3 class=" p-1 mb-2">Add <span class="text-primary"> User</span> Information</h3>
+        <h3 class="text-success p-1 mb-2">Add Product</h3>
         <hr>
 
-        <div class="row">
-            <div class="col-md-12">
-                <!-- alert for success -->
-                <div class="alert alert-success alert-dismissible fade show msg credErr" id="success" role="alert" style="display: none;">
-
-                </div>
-                <!-- alert for error -->
-                <div class="alert alert-danger alert-dismissible fade show msg" id="error" role="alert" style="display: none;">
-                </div>
-            </div>
-        </div>
-
+     
         <!-- form to get data from user -->
         <div class="row ">
-            <div class="col-md-4 px-3 mt-2">
+            <div class="col-md-6 px-3 mt-2">
                 <label class="form-label"> Name</label>
                 <input type="text" class="form-control  mb-3" id="name" placeholder="Enter here..."  required/>
             </div>
 
-            <div class="col-md-4 px-3 mt-2">
+            <div class="col-md-6 px-3 mt-2">
                 <label class="form-label">Price</label>
                 <input type="number" class="form-control mb-3" id='price' placeholder="Enter here..." required/>
             </div>
-            <div class="col-md-4 px-3 mt-2">
+            <div class="col-md-6 px-3 mt-2">
                 <label class="form-label">Description</label>
                 <input type="text" class="form-control mb-3" id='description' placeholder="Enter here..." required/>
             </div>
-            <div class="col-md-4 mt-3 mx-auto">
+            <div class="col-md-6 mt-3 mx-auto">
                 <label class="form-label"></label>
-                <input type="submit" id="send" class="btn btn-primary w-100" name="submit" value="Submit" />
+                <input type="submit" id="send" class="btn btn-success w-100" name="submit" value="Submit" />
             </div>
         </div>
 <!-- delete model -->
@@ -122,14 +111,23 @@
             <span class="visually-hidden">Loading...</span>
         </div>
 
-        <!-- search input -->
-        <div class="mt-5 ">
-            <input type="text" id="searchInput" placeholder="type to search" class="form-control w-50" />
-        </div>
-<!-- show data -->
-        <div id="data_table" class="mt-2">
+         <div class="row mt-5 ">
+                 <div class="col-md-6  ">
+                 <h3 class="text-success">Show Product</h3>             
+                    </div>
 
-        </div>
+
+        <!-- search input -->
+                 <div class=" col-lg-6 ">
+                     <input type="text" id="searchInput" placeholder="type to search" class="form-control w-50" />
+                 </div>
+                 &nbsp; <br>
+                 <hr>
+         </div>
+<!-- show data -->
+         <div id="data_table" class="mt-1">
+
+         </div>
 
     </div>
 
